@@ -6,13 +6,14 @@ class StockOut extends Model {
       {
         quantity: Sequelize.INTEGER,
         out_date: Sequelize.DATE,
+        product_id: Sequelize.INTEGER,
       },
-      { sequelize }
+      { sequelize, tableName: "stock_out" }
     );
   }
 
   static associate(models) {
-    this.belongsTo(models.Product, { foreignKey: "product_id" });
+    this.belongsTo(models.Product, { foreignKey: "product_id", as: "product" });
   }
 }
 
