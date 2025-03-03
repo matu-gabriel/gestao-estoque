@@ -7,5 +7,6 @@ routes.post("/products", ProductController.store);
 routes.get("/products", ProductController.index);
 routes.put("/products/:id", ProductController.update);
 routes.delete("/products/:id", ProductController.delete);
+routes.get("/products/:id", ProductController.show);
 
 export default routes;
