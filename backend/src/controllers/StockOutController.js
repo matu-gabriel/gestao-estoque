@@ -45,6 +45,11 @@ class StockOutCobtroller {
       return res.status(500).json({ error: "Error recording stock issued" });
     }
   }
+
+  async index(req, res) {
+    const stockOuts = await StockOut.findAll();
+    return res.json(stockOuts);
+  }
 }
 
 export default new StockOutCobtroller();

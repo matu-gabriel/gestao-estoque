@@ -15,5 +15,6 @@ routes.post("/stock-entries", StockEntryController.store);
 routes.get("/stock-entries", StockEntryController.index);
 
 routes.post("/stock-out", StockOutController.store);
+routes.get("/stock-out", StockOutController.index);
 
 export default routes;
