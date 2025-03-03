@@ -32,6 +32,48 @@ class ProductController {
     const products = await Product.findAll();
     return res.json(products);
   }
+
+  async update(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string(),
+      description: Yup.string(),
+      price: Yup.number(),
+      current_stock: Yup.number(),
+      supplier: Yup.string(),
+    });
+
+    try {
+      schema.validateSync(req.body, { abortEarly: false });
+    } catch (error) {
+      return res.status(400).json({ error: error.errors });
+    }
+
+    const { id } = req.params;
+    const findProduct = await Product.findByPk(id);
+
+    if (!findProduct) {
+      return res.status(400).json({ messege: "Product not found" });
+    }
+
+    const { name, description, price, current_stock, supplier } = req.body;
+
+    await Product.update(
+      {
+        name,
+        description,
+        price,
+        current_stock,
+        supplier,
+      },
+      {
+        where: {
+          id,
+        },
+      }
+    );
+
+    return res.status(200).json({ messege: "Product updated successfully" });
+  }
 }
 
 export default new ProductController();
