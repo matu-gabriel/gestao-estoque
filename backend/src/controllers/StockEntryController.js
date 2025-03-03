@@ -45,6 +45,11 @@ class StockEntryController {
       return res.status(500).json({ error: "Error recording stock entry" });
     }
   }
+
+  async index(req, res) {
+    const stockEntries = await StockEntry.findAll();
+    return res.json(stockEntries);
+  }
 }
 
 export default new StockEntryController();

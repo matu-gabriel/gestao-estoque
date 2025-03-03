@@ -11,5 +11,6 @@ routes.delete("/products/:id", ProductController.delete);
 routes.get("/products/:id", ProductController.show);
 
 routes.post("/stock-entries", StockEntryController.store);
+routes.get("/stock-entries", StockEntryController.index);
 
 export default routes;
