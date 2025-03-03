@@ -1,6 +1,7 @@
 import { Router } from "express";
 import ProductController from "../controllers/ProductController";
 import StockEntryController from "../controllers/StockEntryController";
+import StockOutController from "../controllers/StockOutController";
 
 const routes = new Router();
 
@@ -12,5 +13,7 @@ routes.get("/products/:id", ProductController.show);
 
 routes.post("/stock-entries", StockEntryController.store);
 routes.get("/stock-entries", StockEntryController.index);
+
+routes.post("/stock-out", StockOutController.store);
 
 export default routes;
