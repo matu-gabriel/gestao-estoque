@@ -74,6 +74,24 @@ class ProductController {
 
     return res.status(200).json({ messege: "Product updated successfully" });
   }
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    const findProduct = await Product.findByPk(id);
+
+    if (!findProduct) {
+      return res.status(400).json({ messege: "Product not found" });
+    }
+
+    await Product.destroy({
+      where: {
+        id,
+      },
+    });
+
+    return res.status(200).json({ messagem: "Product deleted successfully" });
+  }
 }
 
 export default new ProductController();
