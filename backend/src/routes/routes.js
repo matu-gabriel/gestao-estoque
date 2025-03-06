@@ -19,5 +19,6 @@ routes.post("/stock-out", StockOutController.store);
 routes.get("/stock-out", StockOutController.index);
 
 routes.post("/users", UserController.store);
+routes.put("/users/:id", UserController.update);
 
 export default routes;
