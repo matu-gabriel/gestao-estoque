@@ -3,6 +3,7 @@ import ProductController from "../controllers/ProductController";
 import StockEntryController from "../controllers/StockEntryController";
 import StockOutController from "../controllers/StockOutController";
 import UserController from "../controllers/UserController";
+import SessionController from "../controllers/SessionController";
 
 const routes = new Router();
 
@@ -20,5 +21,7 @@ routes.get("/stock-out", StockOutController.index);
 
 routes.post("/users", UserController.store);
 routes.put("/users/:id", UserController.update);
+
+routes.post("/login", SessionController.store);
 
 export default routes;
