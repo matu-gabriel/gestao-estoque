@@ -1,5 +1,7 @@
 import * as Yup from "yup";
 import User from "../app/models/User";
+import jwt from "jsonwebtoken";
+import authConfig from "../config/authConfig";
 
 class SessionController {
   async store(req, res) {
@@ -42,9 +44,15 @@ class SessionController {
       return emailOrPasswordInvalid();
     }
 
-    return res
-      .status(201)
-      .json({ id: user.id, name: user.name, email: user.email });
+    return res.status(201).json({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      admin: user.admin,
+      token: jwt.sign({ id: user.id }, authConfig.secret, {
+        expiresIn: authConfig.expiresIn,
+      }),
+    });
   }
 }
 
