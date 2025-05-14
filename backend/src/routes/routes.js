@@ -4,8 +4,13 @@ import StockEntryController from "../controllers/StockEntryController";
 import StockOutController from "../controllers/StockOutController";
 import UserController from "../controllers/UserController";
 import SessionController from "../controllers/SessionController";
+import authMiddleware from "../middlewares/auth";
 
 const routes = new Router();
+
+routes.post("/login", SessionController.store);
+
+routes.use(authMiddleware);
 
 routes.post("/products", ProductController.store);
 routes.get("/products", ProductController.index);
@@ -21,7 +26,5 @@ routes.get("/stock-out", StockOutController.index);
 
 routes.post("/users", UserController.store);
 routes.put("/users/:id", UserController.update);
-
-routes.post("/login", SessionController.store);
 
 export default routes;
