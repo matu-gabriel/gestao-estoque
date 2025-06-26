@@ -58,7 +58,7 @@ backend/
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seuusuario/estoqueplus-backend.git
+git clone https://github.com/matu-gabriel/estoqueplus-backend.git
 cd estoqueplus-backend
 ```
 ### 2. Inicie os containers
